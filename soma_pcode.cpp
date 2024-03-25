@@ -194,26 +194,33 @@ void pcodevhw(){ // begin
 }//end-void-pcmachine() {interpret};
 
 int main() {
-    code[ 0].f = INT; code[ 0].l = 0; code[ 0].a = 8;
+    code[ 0].f = INT; code[ 0].l = 0; code[ 0].a = 9;
 
     // Carregar o primeiro número (passado como parâmetro) para a memória
-    code[1].f = LIT; code[1].l = 0; code[1].a = 3; // Carrega o valor do primeiro parâmetro
-    code[2].f = STO; code[2].l = 0; code[2].a = 3; // Armazena o primeiro parâmetro na memória
+    code[1].f = LIT; code[1].l = 0; code[1].a = 4; // Carrega o valor do primeiro parâmetro
+    code[2].f = STO; code[2].l = 0; code[2].a = 4; // Armazena o primeiro parâmetro na memória
 
     // Carregar o segundo número (passado como parâmetro) para a memória
     code[3].f = LIT; code[3].l = 0; code[3].a = 4; // Carrega o valor do segundo parâmetro
-    code[4].f = STO; code[4].l = 0; code[4].a = 4; // Armazena o segundo parâmetro na memória
+    code[4].f = STO; code[4].l = 0; code[4].a = 5; // Armazena o segundo parâmetro na memória
 
+    code[ 5].f = LOD; code[ 5].l = 0; code[ 5].a =  4;   
+    code[6].f = STO; code[6].l = 0; code[6].a =  12;  
+    code[7].f = LOD; code[7].l = 0; code[7].a =  5;   
+    code[8].f = STO; code[8].l = 0; code[8].a =  13;  
+
+    code[9].f = CAL; code[9].l = 0; code[9].a = 15;
+    code[15].f = INT; code[15].l = 0; code[15].a =  4;
     // Carregar os valores da memória para a pilha
-    code[5].f = LOD; code[5].l = 0; code[5].a = 3; // Carrega o primeiro número da memória para a pilha
-    code[6].f = LOD; code[6].l = 0; code[6].a = 4; // Carrega o segundo número da memória para a pilha
-
+    code[16].f = LOD; code[16].l = 0; code[16].a = 3; // Carrega o primeiro número da memória para a pilha
+    code[17].f = LOD; code[17].l = 0; code[17].a = 4; // Carrega o segundo número da memória para a pilha
     // Realizar a soma
-    code[7].f = OPR; code[7].l = 0; code[7].a = 2; // Chama a operação de soma
+    code[18].f = OPR; code[18].l = 0; code[18].a = 2; // Chama a operação de soma
     // Armazenar o resultado da soma na memória
-    code[8].f = STO; code[8].l = 0; code[8].a = 5; // Armazena o resultado da soma na memória
+    code[19].f = STO; code[19].l = 1; code[19].a = 6; // Armazena o resultado da soma na memória
+    code[20].f = OPR; code[20].l = 0; code[20].a = 0;
     // Finalizar o programa
-    code[9].f = OPR; code[9].l = 0; code[9].a = 0; // Retornar
+    code[10].f = OPR; code[10].l = 0; code[10].a = 0; // Retornar
 
     pcodevhw(); // Chama a P-code machine para interpretar essas instruções
     return 0;
