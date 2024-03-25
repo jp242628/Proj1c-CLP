@@ -197,7 +197,7 @@ int main() {
     code[ 0].f = INT; code[ 0].l = 0; code[ 0].a = 9;
 
     // Carregar o primeiro número (passado como parâmetro) para a memória
-    code[1].f = LIT; code[1].l = 0; code[1].a = 4; // Carrega o valor do primeiro parâmetro
+    code[1].f = LIT; code[1].l = 0; code[1].a = 2; // Carrega o valor do primeiro parâmetro
     code[2].f = STO; code[2].l = 0; code[2].a = 4; // Armazena o primeiro parâmetro na memória
 
     // Carregar o segundo número (passado como parâmetro) para a memória
@@ -210,7 +210,7 @@ int main() {
     code[8].f = STO; code[8].l = 0; code[8].a =  13;  
 
     code[9].f = CAL; code[9].l = 0; code[9].a = 15;
-    code[15].f = INT; code[15].l = 0; code[15].a =  4;
+    code[15].f = INT; code[15].l = 0; code[15].a =  6;
     // Carregar os valores da memória para a pilha
     code[16].f = LOD; code[16].l = 0; code[16].a = 3; // Carrega o primeiro número da memória para a pilha
     code[17].f = LOD; code[17].l = 0; code[17].a = 4; // Carrega o segundo número da memória para a pilha
