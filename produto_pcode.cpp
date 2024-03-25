@@ -194,19 +194,31 @@ void pcodevhw(){ // begin
 }//end-void-pcmachine() {interpret};
 
 int main() {
-    code[0].f = INT; code[0].l = 0; code[0].a = 8; // Aloca espaço na pilha para 3 variáveis locais
+    // Instruções para inicializar a P-code machine
+    code[0].f = INT; code[0].l = 0; code[0].a = 9; // Aloca espaço na pilha para 3 variáveis locais
 
-    code[1].f = LIT; code[1].l = 0; code[1].a = 2; // Carrega o valor 2 (primeiro número)
+    // Carregar o primeiro número (passado como parâmetro) para a memória
+    code[1].f = LIT; code[1].l = 0; code[1].a = 3; // Carrega o valor do primeiro parâmetro
     code[2].f = STO; code[2].l = 0; code[2].a = 3; // Armazena o primeiro número
 
-    code[3].f = LIT; code[3].l = 0; code[3].a = 3; // Carrega o valor 3 (segundo número)
+    // Carregar o segundo número (passado como parâmetro) para a memória
+    code[3].f = LIT; code[3].l = 0; code[3].a = 4; // Carrega o valor do segundo parâmetro
     code[4].f = STO; code[4].l = 0; code[4].a = 4; // Armazena o segundo número
+    code[5].f = LOD; code[5].l = 0; code[5].a = 3; // Carrega o primeiro parâmetro da multiplicação
+    code[6].f = STO; code[6].l = 0; code[6].a = 12;
+    code[7].f = LOD; code[7].l = 0; code[7].a = 4;
+    code[8].f = STO; code[8].l = 0; code[8].a = 13;
+    // Chamar a função de multiplicação
+    code[9].f = CAL; code[9].l = 0; code[9].a = 11; // Chama a função de multiplicação
+    code[10].f = OPR; code[10].l = 0; code[10].a = 0;  // Retornar
 
-    code[5].f = LOD; code[5].l = 0; code[5].a = 3; // Carrega o primeiro número para a multiplicação
-    code[6].f = LOD; code[6].l = 0; code[6].a = 4; // Carrega o segundo número para a multiplicação
-    code[7].f = OPR; code[7].l = 0; code[7].a = 4; // Chama a operação de multiplicação
-    code[8].f = STO; code[8].l = 1; code[8].a = 5; // Armazena o resultado da multiplicação
-    code[9].f = OPR; code[9].l = 0; code[9].a = 0; // Retorna
+    // Definir a função de multiplicação
+    code[11].f = INT; code[11].l = 0; code[11].a = 6; 
+    code[12].f = LOD; code[12].l = 0; code[12].a = 3; // Carrega o primeiro parâmetro da multiplicação
+    code[13].f = LOD; code[13].l = 0; code[13].a = 4; // Carrega o segundo parâmetro da multiplicação
+    code[14].f = OPR; code[14].l = 0; code[14].a = 4; // Realiza a multiplicação dos parâmetros
+    code[15].f = STO; code[15].l = 1; code[15].a = 5; // Armazena o resultado da multiplicação
+    code[16].f = OPR; code[16].l = 0; code[16].a = 0; // Retornar
 
     pcodevhw(); // Chama a P-code machine para interpretar essas instruções
     return 0;
